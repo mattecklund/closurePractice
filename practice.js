@@ -10,10 +10,12 @@ var outer = function(){
 //Invoke outer saving the return value into another variable called 'inner'.
 
   //Code Here
+  var inner = outer();
 
 //Once you do that, invoke inner.
 
   //Code Here
+  inner();
 
 
 
@@ -33,6 +35,8 @@ var callFriend = function(){
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
+  var call = callFriend();
+  call('435-219-9248');
 
 
 
@@ -45,11 +49,18 @@ var callFriend = function(){
 */
 
   //Code Here
+var makeCounter = function(){
+  counter = 1;
+  return function(){
+    return counter++;
+  }
+}
+
   var count = makeCounter();
-  count() // 1
-  count() // 2
-  count() // 3
-  count() // 4
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 
 
@@ -63,6 +74,62 @@ var callFriend = function(){
   Once completed, add a second arguments that allows the function to be invoked N number of times.
   After the function has been called N number of times, console.log('STAHHP');
 */
+
+
+
+
+
+
+var counter = function(){
+  var count = 0;
+  return function(){
+    if (count % 2 === 0){
+      console.log('Count: ' + count + ' is even');
+    } else {
+      console.log('Count: ' + count + ' is odd')
+    }
+    count++;
+  }
+}
+
+var isEven = counter();
+var isOdd = counter();
+isEven();
+isOdd();
+isEven();
+isOdd();
+isEven();
+isOdd();
+isEven();
+isOdd();
+isEven();
+isOdd();
+isEven();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

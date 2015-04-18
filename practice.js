@@ -71,42 +71,82 @@ var makeCounter = function(){
 /*
   Write a function that accepts another function as it's first argument and returns a new function
   (which invokes the original function that was passed in) that can only ever be executed once.
-  Once completed, add a second arguments that allows the function to be invoked N number of times.
+  Once completed, add a second argument that allows the function to be invoked N number of times.
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+//p.s.  You probably guessed it, but this was worded very terribly.  THe first parts were easy to understand, but how the 
 
 
+//1st part
+var functionFactory = function(fn){
+  var flag = false;
 
-
-
-var counter = function(){
-  var count = 0;
   return function(){
-    if (count % 2 === 0){
-      console.log('Count: ' + count + ' is even');
+    if(!flag){
+      fn();
+      flag = true;
     } else {
-      console.log('Count: ' + count + ' is odd')
+      console.log("STAHHP")
     }
-    count++;
   }
 }
 
-var isEven = counter();
-var isOdd = counter();
-isEven();
-isOdd();
-isEven();
-isOdd();
-isEven();
-isOdd();
-isEven();
-isOdd();
-isEven();
-isOdd();
-isEven();
+var myFunction = functionFactory(function(){
+  console.log('This can only be run once');
+});
+
+//second part
+
+var functionFactory = function(n, fn){
+  var count = 0;
+
+  return function(){
+    if(count < n){
+      fn();
+      count++;
+    } else {
+      console.log("STAHHP")
+    }
+  }
+}
+
+var myFunction = functionFactory(function(){
+  console.log('This can only be run once');
+});
 
 
+
+
+
+
+
+
+
+
+
+
+// Extra Stuff
+
+var fnArray = [];
+
+// closure fix for loop
+
+// for (var i = 0; i > 50; i++){
+//   (function(x){
+//     fnArray.push(functiion(){
+//       return x;
+//     })
+//   })(i)
+// }
+
+
+
+for (var i = 0; i > 50; i++){
+  (
+    function(x){  fnArray.push(function(){  return x; })  }
+  )(i);
+}
 
 
 
